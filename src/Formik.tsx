@@ -672,7 +672,7 @@ function warnAboutMissingIdentifier({
  */
 export function yupToFormErrors<Values>(yupError: any): FormikErrors<Values> {
   let errors: any = {} as FormikErrors<Values>;
-  if (yupError.inner.length === 0) {
+  if (yupError.inner && yupError.inner.length === 0) {
     return setIn(errors, yupError.path, yupError.message);
   }
   for (let err of yupError.inner) {
